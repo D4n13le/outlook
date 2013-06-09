@@ -11,15 +11,21 @@
 
     $user_id = $_POST['password'];
 
-    $result = exec_query('SELECT id_user FROM users WHERE id_user = ?', 'i', $user_id);
+    //check if user exists
+    $result = exec_query('SELECT id_user FROM users WHERE id_user = ?',
+                         'i',
+                         $user_id);
     if($result)
     {
-        logout();
-        open_session();
+        //if it exists, redirect to the survey
+
+        logout(); //clean any old sessions
+        open_session(); //start a new session
         
         $_SESSION['user'] = $user_id;
         header("Location:questions.php") || die();
     }
     else
+        //if it doesn't exist, show an error
         header("Location:login.php?error") || die();
 ?>
