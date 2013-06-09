@@ -1,6 +1,6 @@
 <?php
-	session_start();
-	session_destroy();
+	require_once("lib/common.php");
 
+	logout();
 	header('Location:login.php');
 ?>

@@ -14,13 +14,8 @@
     $result = exec_query('SELECT id_user FROM users WHERE id_user = ?', 'i', $user_id);
     if($result)
     {
-        //Rimuovo eventuali sessioni precedenti
-        session_start();
-        session_unset();
-        session_destroy();
-
-        //Inizializzo nuova sessione
-        session_start();
+        logout();
+        open_session();
         
         $_SESSION['user'] = $user_id;
         header("Location:questions.php") || die();

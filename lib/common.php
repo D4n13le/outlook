@@ -7,6 +7,13 @@
             session_start();
     }
 
+    function logout()
+    {
+        open_session();
+        session_unset();
+        session_destroy();
+    }
+
     function get_user_id()
     {
         open_session();
