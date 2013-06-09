@@ -419,11 +419,20 @@ a {
     font-size: 20px;
 }
 
-#iti_link {
+#questions_link {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     text-align: left;
     background: url("../images/world_icon.png") no-repeat left;
+    padding-left: 25px;
+    margin-right: 20px;
+}
+
+#logout_link {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    text-align: left;
+    background: url("../images/logout_icon.png") no-repeat left;
     padding-left: 25px;
     margin-right: 20px;
 }

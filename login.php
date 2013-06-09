@@ -1,6 +1,8 @@
 <?php
 	session_start();
-	session_destroy();
+
+    if(!empty($_SESSION['user']))
+      header("location:questions.php") || die(); //user not logged in
 ?>
 <!DOCTYPE html >
 <html>

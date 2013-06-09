@@ -1,3 +1,34 @@
+<?php
+  session_start();
+
+  if(empty($_SESSION['user']))
+    header("location:login.php") || die(); //user not logged in
+
+  require_once("settings.php");
+
+  $completed = false;
+  $db = new mysqli($dbLocation, $dbUser, $dbPassword, $dbName);
+
+  if($db)
+  {
+    $query = $db->prepare("SELECT completed FROM users WHERE id_user = ?");
+    
+    $query->bind_param('i', $_SESSION['user']);
+
+    if($query->execute())
+    {
+        $query->bind_result($completed);
+        $query->fetch();
+        $query->close();
+    }
+    
+    $db->close();
+  }
+  
+  if(!$completed)
+    header("Location: login.php");
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,7 +46,8 @@
       </div>
     </div>
       <p id="footer_result">
-        <a id="iti_link" href="questions.php"> rivedi il questionario </a>
+        <a id="questions_link" href="questions.php"> rivedi il questionario </a>
+        <a id="logout_link" href="logout.php"> logout </a>
       </p>
     </div>
   </body>
