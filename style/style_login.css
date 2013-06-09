@@ -445,9 +445,12 @@ a{
 
 }
 
-#go{
-
-	
+#go {
+	font-size: 22px;
+	height: 100%;
+	display: block;
+	margin-right: -100px;
+	line-height: 200px;
 }
 
 #intro_foot{

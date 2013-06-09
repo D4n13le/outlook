@@ -27,7 +27,7 @@
 
 
 
-                <a href="login.php"><p id="go" style="  margin-top:22%; font-size:22px; height:100%;margin-right:-100px;"> prosegui </p></a>
+                <a id="go" href="login.php">prosegui</a>
 	
 
             </div>
