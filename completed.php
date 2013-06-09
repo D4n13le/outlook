@@ -1,32 +1,10 @@
 <?php
-  session_start();
+  require_once("lib/common.php");
 
-  if(empty($_SESSION['user']))
-    header("location:login.php") || die(); //user not logged in
-
-  require_once("settings.php");
-
-  $completed = false;
-  $db = new mysqli($dbLocation, $dbUser, $dbPassword, $dbName);
-
-  if($db)
-  {
-    $query = $db->prepare("SELECT completed FROM users WHERE id_user = ?");
-    
-    $query->bind_param('i', $_SESSION['user']);
-
-    if($query->execute())
-    {
-        $query->bind_result($completed);
-        $query->fetch();
-        $query->close();
-    }
-    
-    $db->close();
-  }
-  
-  if(!$completed)
-    header("Location: login.php");
+  //to show this page user has to be logged in and have completed the survey
+  //if he's not, redirect to login page
+  if(user_is_not_logged_in() || user_has_not_completed_the_survey())
+    header("location:questions.php") || die();
 ?>
 
 <!DOCTYPE html>

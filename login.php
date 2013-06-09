@@ -1,8 +1,9 @@
 <?php
-	session_start();
+	require("lib/common.php");
 
-    if(!empty($_SESSION['user']))
-      header("location:questions.php") || die(); //user not logged in
+	//user can't see this page if he's already logged in
+    if(user_is_logged_in())
+      header("location:questions.php") || die();
 ?>
 <!DOCTYPE html >
 <html>
@@ -23,7 +24,7 @@
 					</form>
 					<?php
 						if(isset($_GET['error']))
-							echo "<p id='login_failed'> La password inserita non risulta essere presente nel nostro database, riprovi. </p>";
+							echo "<p id='login_failed'> La password inserita risulta invalida, riprovi. </p>";
 					?>
 				</div>
 				<div id="description">

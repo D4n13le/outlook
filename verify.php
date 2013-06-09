@@ -1,42 +1,30 @@
 <?php 
-    if(!isset($_POST['password']) )
-        header("location:login.php") || die(); //user not logged in
+    //called in a POST request
+    //parameter expected:
+    //  password: the user id to log with
 
-    $pw = $_POST['password'];
+    require_once("lib/common.php");
 
-    require_once("settings.php");
-    $db = new mysqli($dbLocation, $dbUser, $dbPassword, $dbName);
+    //logged users can't see this page
+    if(user_is_logged_in())
+        header("Location:questions.php") || die();
 
-    
-    if($db->errno)
-        die("Errore connessione al database!");
+    $user_id = $_POST['password'];
 
-    $query = $db->prepare("SELECT id_user FROM users WHERE id_user = ?");
-    
-    $query->bind_param('i', $pw);
-
-    $newlocation = "login.php?error";
-
-    if($query->execute())
+    $result = exec_query('SELECT id_user FROM users WHERE id_user = ?', 'i', $user_id);
+    if($result)
     {
-        $query->bind_result($id_user);
+        //Rimuovo eventuali sessioni precedenti
+        session_start();
+        session_unset();
+        session_destroy();
 
-        if($query->fetch())
-        {
-            $newlocation = "questions.php";
-            //Rimuovo eventuali sessioni precedenti
-            session_start();
-            session_unset();
-            session_destroy();
-            //Inizializzo nuova sessione
-            session_start();
-            
-            $_SESSION['user'] = $id_user;
-            $_SESSION['start_time'] = time();
-        }
-        $query->close();
+        //Inizializzo nuova sessione
+        session_start();
+        
+        $_SESSION['user'] = $user_id;
+        header("Location:questions.php") || die();
     }
-    
-    $db->close();
-    header("Location: $newlocation");
+    else
+        header("Location:login.php?error") || die();
 ?>
