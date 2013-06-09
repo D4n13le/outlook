@@ -1,0 +1,972 @@
+
+/* CSS made by Carlo Varriale - http://carlos-way.deviantart.com */
+
+body{
+
+
+    text-align:center;
+    background-color: #e6e6e6;
+    z-index:-1;
+
+}
+
+
+
+#main_container{
+
+
+    width:1250px;
+    min-height:1000px;
+    margin:auto;
+    text-align:center;
+
+
+}
+
+#up_side{
+
+    width:100%;
+    height:115px;
+    background:url("../images/dashboard_gradient.png") bottom repeat-x ,white;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    text-align:center;
+    border-bottom:1px solid rgba(194, 183, 183, 0.36);
+    z-index:1;
+    box-shadow: 2px 6px 8px 0px rgba(34, 32, 32, 0.070);
+
+
+
+}
+
+
+#dashboard{
+
+
+    margin:auto;
+    width:1250px;
+    height:100%;
+
+
+
+}
+
+#logo{
+
+    float:left;
+    margin-top:40px;
+    margin-left:30px;
+
+}
+
+#des_logo{
+
+    font-family:'Open Sans',Segoe UI,Roboto, sans-serif;
+    font-weight:200;
+    float:left;
+    margin-top:45px;
+    font-size:24px;
+    color: #8f8f8f;
+    margin-left:14px;
+}
+
+
+#submit_button:hover{
+
+
+    border-radius:3px;
+    border:1px solid rgba(0, 100, 0, 0.57);
+    float:right;
+    color:white;
+    padding-left:40px;
+    padding-top:7px;
+    padding-right:7px;
+    padding-bottom:7px;
+    font-family:'Roboto',Arial,sans-serif;
+    margin-top:35px;
+    margin-right:20px;
+    font-size:18px;
+    font-weight:300;
+    box-shadow:inset 0px 1px 1px 1px #007f21;
+
+
+
+
+}
+
+#submit_button{
+
+
+    border-radius:3px;
+    border:1px solid rgba(0, 100, 0, 0.57);
+    float:right;
+    color:white;
+    padding-left:40px;
+    padding-top:7px;
+    padding-right:7px;
+    padding-bottom:7px;
+    font-family:'Roboto',Arial,sans-serif;
+    margin-top:35px;
+    margin-right:20px;
+    font-size:18px;
+    font-weight:300;
+    background: url("../images/dot.png") bottom repeat-x,url("../images/send_icon.png") 5% no-repeat , #00c034;
+}
+
+
+#logout_button{
+
+        border-radius:3px;
+        border:1px solid rgba(0, 100, 0, 0.57);
+        float:right;
+        color:white;
+        padding-left:7px;
+        padding-top:7px;
+        padding-right:7px;
+        padding-bottom:7px;
+        font-family:'Roboto',Arial,sans-serif;
+        margin-top:35px;
+        font-size:18px;
+        font-weight:300;
+        background: url("../images/dot.png") bottom repeat-x, #00c034; 
+        margin-right:75px;
+}
+
+
+#logout_button:hover{
+
+        border-radius:3px;
+        border:1px solid rgba(0, 100, 0, 0.57);
+        float:right;
+        color:white;
+        padding-left:7px;
+        padding-top:7px;
+        padding-right:7px;
+        padding-bottom:7px;
+        font-family:'Roboto',Arial,sans-serif;
+        margin-top:35px;
+        margin-right:75px;
+        font-size:18px;
+        font-weight:300;
+        box-shadow:inset 0px 1px 1px 1px #007f21;
+
+
+
+}
+
+
+
+#guide{
+
+    width:100%;
+    height:193px;
+    background:  url("../images/gradient_guide.png") center no-repeat,url("../images/down_shadow_guide.png") repeat-x bottom , #00c034  url("../images/up_shadow_green.png") repeat-x top;
+    text-align:center;
+    margin-top:108px;
+    left:0;
+    right:0;
+    position:absolute;
+
+
+}
+
+#guide_content{
+
+
+    margin:auto;
+    width:1250px;
+    height:100%;
+    background: url("../images/up_papers2.png") no-repeat bottom;
+    font-family:'Roboto', Segoe UI, Open Sans, sans-serif;
+    font-weight:200;
+    color:white;
+
+}
+
+#questions_body_container{
+
+    width:1193px;
+    text-align:center;
+    margin:auto;
+    min-height:500px;
+    background-color:#faf9f9;
+    padding-top:300px;
+    border-right:1px solid #e6e6e6;
+    border-left:1px solid #faf9f9;
+    padding-bottom:100px;
+
+}
+
+.section{
+    min-height:100px;
+    width:1023px;
+    margin:auto;
+
+}
+
+
+#questions_body{
+
+    margin:auto;
+    margin-top:-20px;
+    width:100%;
+    min-height:600px;
+    background:url("../images/questions_bg.png") repeat-y center;
+    text-align:center;
+
+
+
+
+
+
+}
+
+#guide_text{
+
+    margin-top:55px;
+    font-size:30px;
+    float:left;
+    margin-left:50px;
+
+}
+
+#footer{
+
+
+    width:100%;
+    height:150px;
+    text-align:center;
+    background:  url("../images/bottom_bust.png") top no-repeat , url("../images/up_shadow_green.png") top repeat-x , #00c034;
+    padding-top:70px;
+    position:absolute;
+    left:0;
+    right:0;
+
+
+
+}
+
+
+.subtitle{
+
+    font-size:14px;
+    font-weight:400;
+    color:gray;
+    padding-left:15px;
+
+
+
+
+}
+
+#footer_content{
+
+    width:1150px;
+    text-align:left;
+    padding-left:30px;
+    padding-bottom:30px;
+    margin:auto;
+    color:white;
+    font-weight:200;
+
+
+
+
+
+}
+
+
+.question{
+
+    width:1023px;
+    /*min-height:350px; crea problemi con lo slideup/down*/
+    margin:auto;
+    margin-top:20px;
+    padding-bottom: 40px;
+    text-align:center;
+
+}
+
+
+.question_title{
+
+    min-height:35px;
+    padding-left:10px;
+    font-size:28px;
+    font-weight:200;
+    color:#343434;
+    font-family:'Roboto',Segoe UI,Open Sans,sans-serif;
+    text-align:left;
+    padding-bottom:20px;
+    margin:auto;
+    margin-bottom: 20px;
+    border-bottom:1px solid lightgray;
+
+
+}
+
+.answers{
+
+    width:100%;
+    text-align:left;
+    margin:auto;
+    font-family:'Roboto',Segoe UI,sans-serif;
+    font-size:24px;
+    font-weight:200;
+
+
+
+}
+
+ul{
+
+    font-family:'Roboto',Segoe UI,Open Sans, sans-serif;
+    font-size:30px;
+    font-weight:200;
+    color:#767776;
+    list-style-type:none;
+    margin-top:10px;
+    padding-top:10px;
+
+
+}
+
+li{
+
+
+    margin-top:20px;
+
+}
+
+
+
+
+.footer_title{
+
+    margin-top:100px;
+
+
+}
+
+#iti_logo{
+
+    margin-top:100px;
+
+
+}
+
+.links{
+
+    margin-top:20px;
+    font-family:'Roboto',Segoe UI,Open Sans, sans-serif;
+    color: #00c034;
+    text-decoration:none;
+}
+
+.section_title{
+
+    min-width:100px;
+    background:#00c034;
+    padding-left:15px;
+    font-weight:400;
+    color: #ffffff;
+    padding-top:5px;
+    padding-bottom:5px;
+
+
+}
+
+p{
+
+    font-family:'Roboto',Segoe UI,sans-serif;
+    font-size:18px;
+    font-weight:300;
+    text-align:left;
+
+
+}
+
+
+
+
+#credits{
+
+    float:right;
+    font-family:'Roboto',Segoe UI,sans-serif;
+    font-size:15px;
+    color:white;
+    margin-top:2px;
+    padding-right:35px;
+
+
+}
+
+#user_section{
+
+    height:150px;
+    width:1023px;
+    margin:auto;
+    font-size:18px;
+}
+
+span{
+
+    font-family:'Roboto',Segoe UI,sans-serif;
+    font-size:20px;
+
+
+}
+
+#user_section_title{
+
+
+    color:#00c034;
+    font-size:35px;
+    font-weight:200;
+    width:100%;
+    margin-top:12px;
+    text-align:left;
+
+
+}
+
+#myform{
+
+
+}
+
+#left_usersection_side{
+
+    width:70%;
+    height:100%;
+    float:left;
+
+}
+
+#right_usersection_side{
+
+    width:23%;
+    height:77%;
+    float:right;
+    text-align:right;
+    border-left:1px dashed #cdcdcd;
+    margin-top:15px;
+    font-size:11pt;
+
+
+
+
+}
+
+#user_name{
+
+    text-align:right;
+    margin-right:20px;
+    font-size:12pt;
+    margin-top:5px;
+
+}
+
+a{
+
+    text-decoration:none;
+    color:#00c034;
+
+}
+
+#user_grade_date{
+
+
+    float:right;
+    font-family:'Roboto',Segoe UI,sans-serif;
+    font-weight:300;
+    margin-right:20px;
+    font-size:11pt;
+
+
+}
+
+#user_section_title_sub{
+
+    float:left;
+    margin-top:-25px;
+    font-weight:300;
+    color:gray;
+    font-size:18px;
+    text-align:left;
+
+
+
+}
+
+#user_address{
+
+
+
+    font-family:'Roboto',Segoe UI,sans-serif;
+    font-weight:300;
+    margin-right:20px;
+    font-size:11pt;
+
+
+
+
+
+}
+
+#user_grade{
+
+    font-family:'Roboto',Segoe UI,sans-serif;
+    font-weight:400;
+    margin-right:20px;
+    font-size:11pt;
+    margin-top:3px;
+    color:#00c034;
+
+}
+
+#questions_body_container_foot{
+
+    width:100%;
+    text-align:right;
+    height:100px;
+    background:#faf9f9;
+
+}
+
+#links{
+
+    background: url("../images/iti_logob.png") left no-repeat;
+    padding-left:65px;
+    height:60px;
+    padding-top:26px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#result_container{
+
+    margin-left:auto;
+    margin-right:auto;
+    width:730px;
+    height:171px;
+    margin-top:300px;
+
+
+}
+
+.user_data_span{
+
+    font-size:11pt;
+    font-weight:300;
+    margin-right:3px;
+
+}
+
+#result_container_left_side{
+
+    height:100%;
+    width:45%;
+    background:url("../images/logooff.png") no-repeat center;
+    float:left;
+    border-right:1px dashed lightgray;
+
+}
+
+
+#result_container_right_side{
+
+    width:52%;
+    height:65%;
+    float:right;
+    text-align:left;
+
+
+}
+
+#result{
+
+    margin-top:80px;
+    padding-left:10px;
+    color: #7d7d7d;
+    font-weight:300;
+    font-size:20px;
+
+}
+
+#iti_link{
+
+    font-family:'Roboto', sans-serif;
+    font-weight:400;
+    text-align:left;
+    background:url("../images/world_icon.png") no-repeat left;
+    padding-left:25px;
+    margin-right:20px;
+
+
+
+}
+
+#footer_result{
+
+    text-align:right;
+    margin-left:auto;
+    margin-right:auto;
+    width:720px;
+    height:50px;
+    border-top:1px solid lightgray;
+    padding-top:30px;
+    margin-top:50px;
+
+
+
+}
+
+#hidden_submit {
+    display: none;
+}
+
+.nok {
+
+    border-bottom:2px dashed #F27489;
+    padding-top:15px;
+
+}
+
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+@media only screen and (max-width:1260px){
+
+
+    html{
+
+        background:white;
+
+    }
+
+
+    #body{
+
+        background:white;
+    }
+
+    #myform{
+
+        background:white;
+
+    }
+
+    #guide{
+
+        width:100%;
+        height:193px;
+        background:  url("../images/gradient_guide.png") center no-repeat,url("../images/down_shadow_guide.png") repeat-x bottom , #00c034  url("../images/up_shadow_green.png") repeat-x top;
+        text-align:center;
+        margin-top:108px;
+        left:0;
+        right:0;
+        position:absolute;
+
+
+    }
+
+    #guide_content{
+
+
+        margin:auto;
+        width:100%;
+        height:100%;
+        background:none;
+        font-family:'Roboto', Segoe UI, Open Sans, sans-serif;
+        font-weight:200;
+        color:white;
+        float:none;
+        text-align:center;
+        margin-left:auto;
+        margin-right:auto;
+
+    }
+
+
+    #guide_text{
+
+        padding-left:2%;
+        margin-right:auto;
+
+
+    }
+
+    #questions_body_container{
+
+        width:90%;
+        border-right:20px solid white;
+        border-left:20px solid white;
+        padding-top:400px;
+        padding-bottom:100px;
+        background:white;
+
+    }
+
+    #up_side{
+
+        border-bottom:2px solid #00c034;
+        background:white;
+
+    }
+
+    #dashboard{
+
+        width:100%;
+
+    }
+
+    .section{
+
+        width:100%;
+
+    }
+
+    #user_section{
+
+        width:100%;
+
+    }
+
+    .question{
+
+        width:100%;
+
+    }
+
+
+    #footer {
+        width: 100%;
+        height: 150px;
+        text-align: center;
+        background: url("../images/up_shadow_green.png") repeat-x scroll center top, none repeat scroll 0% 0% rgb(0, 192, 52);
+        padding-top: 70px;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+    }
+
+
+    #footer_content {
+
+        width: 80%;
+        background: none repeat scroll 0% 0% rgb(0, 192, 52);
+        text-align:center;
+    }
+
+
+    #credits {
+
+        display:none;
+    }
+
+    #links {
+        background: url("../images/iti_logob.png") no-repeat scroll left center transparent;
+        padding-left: 65px;
+        height: 60px;
+        padding-top: 26px;
+    }
+
+
+    #guide_text {
+        margin-top: 55px;
+        float: left;
+        margin-left:auto;
+        margin-right:auto;
+        font-size: 30px;
+    }
+
+
+
+
+}
+
+
+@media only screen and (max-width:620px){
+
+
+    #links {
+        background: url("../images/iti_logob.png") no-repeat scroll left center transparent;
+        padding-left: 65px;
+        height: 60px;
+        padding-top: 26px;
+        text-align:center;
+    }
+
+
+    #des_logo{
+
+        display:none;
+
+    }
+
+    #user_section_title_sub{
+
+        display:none;
+
+    }
+
+    #right_usersection_side {
+        width: 23%;
+        height: 77%;
+        float: right;
+        text-align: right;
+        border-left: 1px dashed rgb(205, 205, 205);
+        margin-top: 15px;
+        font-size: 11pt;
+
+    }
+
+    .user_data_span {
+        font-size: 11pt;
+        font-weight: 300;
+        margin-right: 3px;
+        display:none;
+    }
+
+    #user_grade_date {
+        float: right;
+        font-family: 'Roboto',Segoe UI,sans-serif;
+        font-weight: 300;
+        margin-right: 20px;
+        font-size: 11pt;
+        display:none;
+    }
+
+    #user_address {
+        font-family: 'Roboto',Segoe UI,sans-serif;
+        font-weight: 300;
+        margin-right: 20px;
+        font-size: 11pt;
+        display:none;
+    }
+
+    .user_data_span {
+        font-size: 11pt;
+        font-weight: 300;
+        margin-right: 3px;
+        display:none;
+    }
+
+    #user_grade {
+        font-family: 'Roboto',Segoe UI,sans-serif;
+        font-weight: 400;
+        margin-right: 20px;
+        font-size: 11pt;
+        margin-top: 3px;
+        color: rgb(0, 192, 52);
+        display:none;
+    }
+
+    #user_name{
+
+        float:right;
+
+
+    }
+
+    #guide_text {
+        margin-top: 55px;
+        font-size: 25px;
+        margin-left:auto;
+        margin-right:auto;
+
+
+    }
+
+
+
+
+
+}
+
+@media only screen and (max-width:720px){
+
+
+
+    #guide_text{
+
+        font-size:25px;
+
+    }
+
+    #links {
+        background: url("../images/iti_logob.png") no-repeat scroll left center transparent;
+        padding-left: 65px;
+        height: 60px;
+        padding-top: 26px;
+        text-align:center;
+    }
+
+
+    .user_data_span {
+        font-size: 11pt;
+        font-weight: 300;
+        margin-right: 3px;
+        display:none;
+    }
+
+    #user_grade_date {
+        float: right;
+        font-family: 'Roboto',Segoe UI,sans-serif;
+        font-weight: 300;
+        margin-right: 20px;
+        font-size: 11pt;
+        display:none;
+    }
+
+    #user_address {
+        font-family: 'Roboto',Segoe UI,sans-serif;
+        font-weight: 300;
+        margin-right: 20px;
+        font-size: 11pt;
+        display:none;
+    }
+
+    .user_data_span {
+        font-size: 11pt;
+        font-weight: 300;
+        margin-right: 3px;
+        display:none;
+    }
+
+    #user_grade {
+        font-family: 'Roboto',Segoe UI,sans-serif;
+        font-weight: 400;
+        margin-right: 20px;
+        font-size: 11pt;
+        margin-top: 3px;
+        color: rgb(0, 192, 52);
+        display:none;
+    }
+
+    #user_name{
+
+        float:right;
+
+
+    }
+
+    #user_section_title_sub{
+
+        display:none;
+
+    }
+
+
+}

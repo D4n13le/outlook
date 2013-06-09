@@ -1,0 +1,494 @@
+/* CSS Made by Carlo Varriale carlos-way.deviantart.com */
+
+
+#container{
+
+	height:580px;
+	width:1000px;
+	margin:auto;
+
+}
+
+body {
+
+	text-align:center;
+	padding-top:8%;
+	font-family:Open Sans, Segoe UI,sans-serif;
+	color:gray;
+	background:#fdfcfc;
+
+}
+
+#container_left{
+
+	float:left;
+	height:580px;
+	width: 500px;
+	text-align:right;
+	
+
+}
+
+
+#container_right{
+
+	float:right;
+	height:100%;
+	width: 498px;
+	text-align:left;
+	border-left:1px dashed #B4B4B4;
+	
+	
+	
+}
+
+#logo{
+
+	background:url("../images/logo.png") no-repeat;
+	width:200px;
+	height:75px;
+	margin-left:250px;
+	border-style:none;
+	margin-right:50px;
+
+}
+
+#login_container{
+
+
+	margin-top:120px;
+	height:210px;
+	padding-left:70px;
+
+
+}
+
+
+.input_text{
+
+		border:1px solid lightgray;
+		height:30px;
+		font-family:Open Sans, Segoe UI, sans-serif;
+		padding-left:5px;
+		width:150px;
+		height:30px;
+		border-radius:1px;
+		box-shadow:inset 0px 1px 1px 0px #e1e1e1;
+
+}
+
+.input_name{
+
+	font-family:Open Sans,Segoe UI,sans-serif;
+	font-size:14px;
+
+}
+
+
+#bg_quotes{
+
+	background:url("../images/cits_q.png") no-repeat;
+	height:400px;
+	width:440px;
+	margin:auto;
+	margin-right:-2px;
+
+}
+
+button{
+
+	button {
+height: 39px;
+width: 120px;
+font-family: Open Sans,Segoe UI,sans-serif;
+border-radius: 3px 3px 3px 3px;
+}
+	
+
+}
+
+#logo_container{
+
+	width:100%;
+	height:150px;
+	
+
+}
+
+#phrase{
+
+	margin-right:50px;
+	font-weight:lighter;
+	color:#00c034;
+
+}
+
+
+#description{
+
+	
+	padding-left:70px;
+	font-weight:lighter;
+	font-size:18px;
+	margin-top:25px;
+	color:gray;
+
+
+}
+
+
+#footer{
+
+	width:100%;
+	height:100px;
+	margin-top:20px;
+
+}
+
+#links{
+
+	width:50%;
+	text-align:right;
+	height:100%;
+	float:left;
+	margin-top:20px;
+	
+	
+}
+
+a{
+
+	text-decoration:none;
+	color:#00c034;
+	margin-right:20px;
+	
+
+}
+
+
+#iti_logo{
+
+	margin-right:240px;
+	margin-top:20px;
+
+}
+
+
+#link_c{
+
+	width:240px;
+	margin:auto;
+	margin-top:-55px;
+	margin-right:-10px;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;
+
+}
+
+#login_failed{
+    color: red;
+    font-weight:lighter;
+}
+
+
+
+
+
+
+
+/* CSS Made by Carlo Varriale carlos-way.deviantart.com */
+
+
+#container{
+
+	height:580px;
+	width:1000px;
+	margin:auto;
+
+}
+
+body {
+
+	text-align:center;
+	padding-top:8%;
+	font-family:Open Sans, Segoe UI,sans-serif;
+	color:gray;
+
+}
+
+#container_left{
+
+	float:left;
+	height:580px;
+	width: 500px;
+	text-align:right;
+	
+
+}
+
+
+#container_right{
+
+	float:right;
+	height:100%;
+	width: 498px;
+	text-align:left;
+	border-left:1px dashed #B4B4B4;
+	
+	
+	
+}
+
+#logo{
+
+	background:url("../images/logo.png") no-repeat;
+	width:200px;
+	height:75px;
+	margin-left:250px;
+	border-style:none;
+	margin-right:50px;
+
+}
+
+#login_container{
+
+
+	margin-top:70px;
+	height:210px;
+	padding-left:70px;
+
+
+}
+
+
+.input_text{
+
+		border:1px solid lightgray;
+		height:30px;
+		font-family:Open Sans, Segoe UI, sans-serif;
+		padding-left:5px;
+		width:150px;
+		height:30px;
+
+}
+
+.input_name{
+
+	font-family:Open Sans,Segoe UI,sans-serif;
+	font-size:14px;
+
+}
+
+
+#bg_quotes{
+
+	background:url("../images/cits_q.png") no-repeat;
+	height:400px;
+	width:440px;
+	margin:auto;
+	margin-right:-1px;
+
+}
+
+button{
+
+	border:1px solid lightgray;
+	height:39px;
+	width:120px;
+	font-family:Open Sans, Segoe UI, sans-serif;
+
+}
+
+#logo_container{
+
+	width:100%;
+	height:150px;
+	
+
+}
+
+#phrase{
+
+	margin-right:50px;
+	font-weight:lighter;
+	color:#5ebb15;
+
+}
+
+
+#description{
+
+	
+	padding-left:70px;
+	font-weight:lighter;
+	font-size:18px;
+	margin-top:50px;
+	color:gray;
+
+
+}
+
+
+#footer{
+
+	width:100%;
+	height:100px;
+	margin-top:20px;
+
+}
+
+#links{
+
+	width:50%;
+	text-align:right;
+	height:100%;
+	float:left;
+	margin-top:20px;
+	
+	
+}
+
+a{
+
+	text-decoration:none;
+	color:#00c034;
+	margin-right:20px;
+	
+
+}
+
+
+#iti_logo{
+
+	margin-right:240px;
+	margin-top:20px;
+
+}
+
+
+#link_c{
+
+	width:240px;
+	margin:auto;
+	margin-top:-55px;
+	margin-right:-10px;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;
+
+}
+
+#login_failed{
+    color: red;
+    font-weight:lighter;
+}
+
+
+
+#maincontainer{
+
+    width:1000px;
+    height:400px;
+    margin-left:auto;
+    margin-right:auto;
+    font-family:'Roboto',Segoe UI,sans-serif;
+
+}
+
+
+#intro_body{
+
+    text-align:center;
+    background:#FAF8F8;
+
+
+
+}
+
+
+#intro_div{
+
+
+    width:100%;
+    height:200px;
+    margin-top:10%;
+
+}
+
+
+#intro_div_left{
+
+    width:35%;
+    height:100%;
+    float:left;
+
+
+}
+
+
+#intro_div_right{
+
+
+    float:right;
+    height:100%;
+    width:40%;
+    background:url("../images/arrow_right.png") right no-repeat;
+    
+
+}
+
+#project_logo{
+
+
+    margin-top:30px;
+
+}
+
+#go{
+
+	
+}
+
+#intro_foot{
+
+    padding-top:10px;
+    width:100%;
+
+
+}
+
+#credits_intro{
+
+    float:left;
+    margin-left:60px;
+
+
+}
+
+
+
+#top_introb{
+
+    width:100%;
+    height:80px;
+    background:url("../images/logo.png") left no-repeat;
+    border-bottom:1px solid #d1d1d1;
+    padding-bottom:5%;
+
+
+}
+
+
+#introb_guide{
+
+    float:left;
+    max-width:600px;
+    padding-top:20px;
+    padding-left:20px;
+    text-align:left;
+    padding-right:10px;
+    border-right:1px solid lightgray;
+    height:400px;
+
+}
