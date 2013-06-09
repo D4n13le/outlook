@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Outlook - Questionario completato</title>
-    <link rel="stylesheet" type="text/css"  href="style/style_questions.css"/>
+    <link rel="stylesheet" type="text/css"  href="style/questions.css"/>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500' rel='stylesheet' type='text/css'>
   </head>

@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<title> Login - Outlook </title>
-		<link rel="stylesheet" href="style/style_login.css"/>
+		<link rel="stylesheet" href="style/login.css"/>
 	</head>
 	<body>
 		<div id="container">

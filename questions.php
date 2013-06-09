@@ -26,7 +26,7 @@
 
   <title> Outlook - Questionario</title>
 
-  <link rel="stylesheet" type="text/css" href="style/style_questions.css"/>
+  <link rel="stylesheet" type="text/css" href="style/questions.css"/>
   <link rel="stylesheet" type="text/css" href="style/reveal.css" >
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Progetto Outlook - Intro</title>
-    <link rel="stylesheet" href="style/style_login.css"/>
+    <link rel="stylesheet" href="style/login.css"/>
 </head>
 
 
