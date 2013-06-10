@@ -41,6 +41,9 @@
 	$args = array_merge(array($query, $types), $answers_list, $answers_list);
 	$result = call_user_func_array('exec_query_multiple_results', $args);
 
+	disable_autocommit();
+
+	$success = True;
 	foreach($result as $row)
 	{
 		$answer = $row->id_answer;
@@ -50,14 +53,26 @@
 			      VALUES
 			      (DEFAULT, ?, ?)';
 		$result = exec_query($query, 'ii', $id_user, $answer);	
+
+		if($result === False)
+			$success = False;
 	}
 
 	//user has completed the survey
 	$query = 'UPDATE users
 			  SET completed=1
 			  WHERE id_user=?';
-	exec_query($query, 'i', $id_user);
+	$result = exec_query($query, 'i', $id_user);
+
+	if($result === False)
+		$success = False;
 	
+	if($success)
+		commit();
+	else
+		rollback();	
+
+	enable_autocommit();
 
 	header('location:completed.php') || die();
 ?>

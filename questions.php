@@ -138,7 +138,7 @@
 											  FROM answers
 											  WHERE id_question=?
 											  ORDER BY answer_order";
-						$answers = exec_query_multiple_results($answers_query, 'ii', $question->id_question, get_user_id());
+						            $answers = exec_query_multiple_results($answers_query, 'ii', get_user_id(), $question->id_question);
                         
                         
                         switch($question->id_question_type): 

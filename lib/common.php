@@ -46,17 +46,19 @@
 
     //return an array with multiple object, one for each row of the result
     //each object has as many fields as the fields in the select part of the query
+    //returns False if it fails
     function exec_query_multiple_results($query_string, $types = '')
     {
-        
-
         $result = array();
         $db = get_db();
 
-        if(!$db)
-            return array();
-    
+        if(!$db) //check connection
+            return False;
+
         $query = $db->prepare($query_string);
+
+        if(!$query) //error while preparing the statement
+            return False;
 
         if(func_num_args() > 2)
         {
@@ -82,24 +84,56 @@
 
                 $temp_result->close();    
             }
-            
-            $query->close();
         }
+        else
+            return False;
 
+        $query->close();
         //$db->close(); //shouldn't be necessary
 
         return $result;
     }
 
+    function disable_autocommit()
+    {
+        $db = get_db();
+        if($db)
+            $db->autocommit(FALSE);
+    }
+
+    function enable_autocommit()
+    {
+        $db = get_db();
+        if($db)
+            $db->autocommit(TRUE);
+    }
+
+    function commit()
+    {
+        $db = get_db();
+        if($db)
+            $db->commit();
+    }
+
+    function rollback()
+    {
+        $db = get_db();
+        if($db)
+            $db->rollback();
+    }
+
     //returns the first object of the result
     //or NULL if there is none
+    //or False if the query fails
     function exec_query($query_string, $types = '')
     {
         $result = call_user_func_array('exec_query_multiple_results', func_get_args());
-        if(count($result) > 0)
-            return $result[0];
-        else
+        if($result === False)
+            return False;
+        if(count($result) == 0)
             return NULL;
+        else
+            return $result[0];
     }
 
     function user_has_completed_the_survey()
@@ -109,9 +143,11 @@
 
         $id_user = get_user_id();
 
-        return exec_query("SELECT completed FROM users WHERE id_user = ?",
-                          "i",
-                          $id_user)->completed;
+        $result = exec_query("SELECT completed FROM users WHERE id_user = ?", "i", $id_user);
+        if($result)
+            return $result->completed;
+        else
+            return False; //an error happened/invalid id
     }
 
     function user_has_not_completed_the_survey()
