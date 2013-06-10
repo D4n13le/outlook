@@ -1,5 +1,5 @@
 <?php
-    //require_once("settings.php");
+    require_once("settings.php");
 
     function open_session()
     {
@@ -34,15 +34,27 @@
         return !user_is_logged_in();
     }
 
-    function exec_query($query_string, $types = '')
+    $db = NULL;
+    function get_db()
     {
-        require_once("settings.php");
-
-        $result = NULL;
-        $db = new mysqli($dbLocation, $dbUser, $dbPassword, $dbName);
+        global $dbLocation, $dbUser, $dbPassword, $dbName, $db;
 
         if(!$db)
-            return NULL;
+            $db = new mysqli($dbLocation, $dbUser, $dbPassword, $dbName);
+        return $db;
+    }
+
+    //return an array with multiple object, one for each row of the result
+    //each object has as many fields as the fields in the select part of the query
+    function exec_query_multiple_results($query_string, $types = '')
+    {
+        
+
+        $result = array();
+        $db = get_db();
+
+        if(!$db)
+            return array();
     
         $query = $db->prepare($query_string);
 
@@ -60,15 +72,30 @@
 
         if($query->execute())
         {
-            $query->bind_result($result);
-            if(!$query->fetch())
-                return NULL;
+            $result = array();
+
+            $temp_result = $query->get_result();
+            while($row = $temp_result->fetch_object())
+                $result[] = $row;
+
+            $temp_result->close();
             $query->close();
         }
 
-        $db->close();
+        //$db->close(); //shouldn't be necessary
 
         return $result;
+    }
+
+    //returns the first object of the result
+    //or NULL if there is none
+    function exec_query($query_string, $types = '')
+    {
+        $result = call_user_func_array('exec_query_multiple_results', func_get_args());
+        if(count($result) > 0)
+            return $result[0];
+        else
+            return NULL;
     }
 
     function user_has_completed_the_survey()
@@ -80,7 +107,7 @@
 
         return exec_query("SELECT completed FROM users WHERE id_user = ?",
                           "i",
-                          $id_user);
+                          $id_user)->completed;
     }
 
     function user_has_not_completed_the_survey()

@@ -1,19 +1,11 @@
 <?php
-    session_start();
+    require_once('lib/common.php');
 
-    if(empty($_SESSION['user']))
+    if(user_is_not_logged_in())
       header("location:login.php") || die(); //user not logged in
 
-    $id_user = $_SESSION['user'];   
-
-    require_once("settings.php");
-    $db = new mysqli($dbLocation, $dbUser, $dbPassword, $dbName);
-
-    //check if user has already completed the survey
-    $query = "SELECT completed FROM users WHERE id_user={$id_user}";
-    $result = $db->query($query);
-
-    $completed = $result->fetch_object()->completed;
+    $completed = user_has_completed_the_survey();
+    $id_user = get_user_id();
 ?>
 
 <!DOCTYPE html>
@@ -88,12 +80,12 @@
 
       <?php
 
-        $data_query = "SELECT name, surname, sex, graduation_year, specializations.description, grade, laud
+        $data_query = 'SELECT name, surname, sex, graduation_year, specializations.description, grade, laud
                        FROM users, specializations
-                       WHERE users.id_user={$id_user}
-                       AND users.id_specialization=specializations.id_specialization";
-        $data_result = $db->query($data_query);
-        $data = $data_result->fetch_object();
+                       WHERE users.id_user=?
+                       AND users.id_specialization=specializations.id_specialization';
+
+        $data = exec_query($data_query, 'i', $id_user);
       ?>
 
       <div id="right_usersection_side">
@@ -111,26 +103,25 @@
                            FROM sections
                            ORDER BY section_order';
 
-        $sections_result = $db->query($sections_query);
-
-        while($section = $sections_result->fetch_object()):
+        $sections = exec_query_multiple_results($sections_query);
+        foreach($sections as $section):
         ?>
             <div class="section">
                 <p class="section_title">
                     <?php echo mb_strtoupper($section->title, "iso-8859-1"); ?>
                 </p>
                 <?php
-                    $questions_query = "SELECT id_question, text, id_question_type, id_question in (
+                    $questions_query = 'SELECT id_question, text, id_question_type, id_question in (
                                                 SELECT DISTINCT answers.id_question
                                                 FROM questions, answers, sections
                                                 WHERE answers.id_answer = questions.dependency
                                                    OR answers.id_answer = sections.dependency
                                             ) AS has_dependencies
                                         FROM questions
-                                        WHERE questions.id_section={$section->id_section}
-                                        ORDER BY question_order";
-                    $questions_result = $db->query($questions_query);
-                    while($question = $questions_result->fetch_object()):
+                                        WHERE questions.id_section=?
+                                        ORDER BY question_order';
+                    $questions = exec_query_multiple_results($questions_query, 'i', $section->id_section);
+                    foreach($questions as $question):
                 ?>
 
                 <div id="question<?php echo $question->id_question?>" data-question_id="<?php echo $question->id_question?>" class="question">
@@ -145,13 +136,14 @@
                         $answers_query = "SELECT id_answer, text,
                                             id_answer IN (SELECT id_answer FROM given_answers WHERE id_user={$id_user}) AS selected
                                           FROM answers
-                                          WHERE id_question={$question->id_question}
+                                          WHERE id_question=?
                                           ORDER BY answer_order";
-                        $answers_result = $db->query($answers_query);
+                        $answers = exec_query_multiple_results($answers_query, 'i', $question->id_question);
+                        
                         
                         switch($question->id_question_type): 
                         case 1:
-                            while($answer = $answers_result->fetch_object()): ?>
+                            foreach($answers as $answer): ?>
                             <input type="radio" name="<?php echo $question->id_question ?>"
                                 value="<?php echo $answer->id_answer ?>"
                                 <?php if($question->has_dependencies):?> data-side-effects="true" <?php endif?>
@@ -160,23 +152,23 @@
                                 <?php echo $answer->text; ?>
                             </input>
                             <br>
-                            <?php endwhile ?>
+                            <?php endforeach ?>
                         <?php break;
                         case 2: ?>
                             <select <?php if($question->has_dependencies):?> data-side-effects="true" <?php endif?>
                                     name="<?php echo $question->id_question ?>"
                                     <?php if($completed):?> disabled <?php endif?>>
                             <option value="" disabled selected/>
-                            <?php while($answer = $answers_result->fetch_object()): ?>
+                            <?php foreach($answers as $answer): ?>
                                 <option value="<?php echo $answer->id_answer?>"
                                     <?php if($answer->selected):?> selected <?php endif?>>
                                     <?php echo $answer->text?>
                                 </option>
-                            <?php endwhile ?>
+                            <?php endforeach ?>
                             </select>
                         <?php break;
                         case 3: 
-                            while($answer = $answers_result->fetch_object()): ?>
+                            foreach($answers as $answer): ?>
                             <input type="checkbox" name="<?php echo $question->id_question ?>[]"
                                 value="<?php echo $answer->id_answer ?>"
                                 <?php if($question->has_dependencies):?> data-side-effects="true" <?php endif?>
@@ -185,13 +177,13 @@
                                 <?php echo $answer->text; ?>
                             </input>
                             <br>
-                            <?php endwhile ?>
+                            <?php endforeach ?>
                         <?php endswitch ?>
                     </div>
                 </div>
-            <?php endwhile ?>
+            <?php endforeach ?>
             </div>
-        <?php endwhile ?>
+        <?php endforeach ?>
 
         </div>
         <input type="submit" id="hidden_submit"/>
