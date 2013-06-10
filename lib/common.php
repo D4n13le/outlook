@@ -1,5 +1,5 @@
 <?php
-    require_once("settings.php");
+    require_once(__DIR__.'\..\settings.php');
 
     function open_session()
     {
@@ -67,7 +67,7 @@
                 foreach($args as $key => $value)
             $refs[$key] = &$args[$key];
             
-            call_user_func_array(array($query, "bind_param"), $refs);
+            call_user_func_array(array($query, 'bind_param'), $refs);
         }
 
         if($query->execute())
@@ -113,5 +113,10 @@
     function user_has_not_completed_the_survey()
     {
         return !user_has_completed_the_survey();
+    }
+
+    function build_question_marks_string($n)
+    {
+        return implode(',', array_fill(0, $n, '?'));
     }
 ?>

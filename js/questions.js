@@ -47,6 +47,8 @@ function fetch_questions()
         {q: s},
         function(data) {
            var questions_to_show = JSON.parse(data);
+           questions_to_show = $.map(questions_to_show, 
+                    function(id) { return id.toString() });
            $('.question').each(function() {
               var to_show = $.inArray($(this).attr('data-question_id'), questions_to_show) >= 0;
               var visible = $(this).is(":visible");
