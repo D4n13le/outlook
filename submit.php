@@ -1,67 +1,64 @@
 <?php
-	session_start();
+	require_once('lib/common.php');
 
 
-	if(empty($_SESSION['user']))
+	if(user_is_not_logged_in())
 		header("location:login.php") || die(); //user not logged in
+
+	if(user_has_completed_the_survey())
+		header("location:questions.php") || die(); //questionario già inviato
 
 	if(!isset($_POST))
 		header("location:questions.php");
 
-	$id_user = $_SESSION['user'];
+	$id_user = get_user_id();
 
-	$answers = array();
+	$answers_list = array();
 	foreach($_POST as $id_question => $id_answer)
 	{
 		if(is_array($id_answer))
-			$answers[] = implode(",",$id_answer);
+			foreach($id_answer as $id)
+				$answers_list[] = $id;
 		else
-			$answers[] = $id_answer;
+			$answers_list[] = $id_answer;
 	}
 
-	if($answers.length == 0)
+	if(count($answers_list) == 0)
 		header("location:questions.php");
 
-	$answers_string = implode(",",$answers);
-
-	require_once("settings.php");
-	$db = new mysqli($dbLocation, $dbUser, $dbPassword, $dbName);
-
-	//check if user has already completed the survey
-	$query = "SELECT completed FROM users WHERE id_user={$id_user}";
-	$result = $db->query($query);
-
-	if($result->fetch_object()->completed)
-		header("location:questions.php") || die(); //questionario già inviato
-
 	//filtering out invalid answers
+	$n = count($answers_list);
+
+	$question_marks_string = build_question_marks_string($n);
+
 	$query = "SELECT answers.id_answer
 			  FROM answers, questions
 			  WHERE answers.id_question = questions.id_question
-			  AND answers.id_answer IN ({$answers_string}) 
+			  AND answers.id_answer IN ({$question_marks_string}) 
 			  AND ( questions.dependency IS NULL 
-			  		OR questions.dependency IN ({$answers_string}))";
-	$result = $db->query($query);
+			  		OR questions.dependency IN ({$question_marks_string}))";
+	$types = str_repeat('i', $n * 2);
+	$args = array_merge(array($query, $types), $answers_list, $answers_list);
+	$result = call_user_func_array('exec_query_multiple_results', $args);
 
-	$answers = array();
-	while($answer = $result->fetch_object())
-		$answers[] = $answer->id_answer;
-
-	//populate answers_date
-	foreach($answers as $answer)
+	foreach($result as $row)
 	{
-		$query = "INSERT INTO given_answers
+		$answer = $row->id_answer;
+		echo "id $answer -> ";
+
+		$query = 'INSERT INTO given_answers
 			      (id_given_answer, id_user, id_answer)
 			      VALUES
-			      (DEFAULT, {$id_user}, {$answer})";
-		$result = $db->query($query);		
+			      (DEFAULT, ?, ?)';
+		$result = exec_query($query, 'ii', $id_user, $answer);	
+		echo "ok";
 	}
 
 	//user has completed the survey
-	$query = "UPDATE users
+	$query = 'UPDATE users
 			  SET completed=1
-			  WHERE id_user={$id_user}";
-	$result = $db->query($query);
+			  WHERE id_user=?';
+	exec_query($query, 'i', $id_user);
 	
 
 	header("location:completed.php") || die();

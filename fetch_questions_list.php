@@ -10,20 +10,19 @@
 
     $n = count($answers_list);
 
+    $question_marks_string = build_question_marks_string($n);
     $query = 
-    'SELECT id_question
+    "SELECT id_question
 	    FROM questions, sections
 	    WHERE questions.id_section=sections.id_section
 	    AND (sections.dependency IS NULL
-              OR sections.dependency IN ('.build_question_marks_string($n).')
+              OR sections.dependency IN ({$question_marks_string})
 	    	  OR sections.first_question = questions.id_question)
 		AND (questions.dependency IS NULL
-              OR questions.dependency IN ('.build_question_marks_string($n).'))
-		ORDER BY sections.section_order, questions.question_order';
-
+              OR questions.dependency IN ({$question_marks_string}))
+		ORDER BY sections.section_order, questions.question_order";
     $types = str_repeat('i', $n * 2);
-    $args = array_merge(array($query, $types),
-                                      $answers_list, $answers_list);
+    $args = array_merge(array($query, $types), $answers_list, $answers_list);
     $result = call_user_func_array('exec_query_multiple_results', $args);
 
     $questions = array();

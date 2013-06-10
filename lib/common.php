@@ -75,10 +75,14 @@
             $result = array();
 
             $temp_result = $query->get_result();
-            while($row = $temp_result->fetch_object())
-                $result[] = $row;
+            if($temp_result)
+            {
+                while($row = $temp_result->fetch_object())
+                    $result[] = $row;
 
-            $temp_result->close();
+                $temp_result->close();    
+            }
+            
             $query->close();
         }
 
