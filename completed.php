@@ -14,6 +14,9 @@
     <link href="style/questions.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" rel="stylesheet" type="text/css">
+    
+    <link rel='shortcut icon' type='image/x-icon' href='images/world_icon.png' />
+
 </head>
 
 <body style="background-color:#f7f7f7;">

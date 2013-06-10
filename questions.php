@@ -18,6 +18,8 @@
 
   <title> Outlook - Questionario</title>
 
+  <link rel='shortcut icon' type='image/x-icon' href='images/world_icon.png' />
+
   <link rel="stylesheet" type="text/css" href="style/questions.css"/>
   <link rel="stylesheet" type="text/css" href="style/reveal.css" >
 

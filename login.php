@@ -11,6 +11,7 @@
 <head>
     <title>Login - Outlook</title>
     <link href="style/login.css" rel="stylesheet">
+    <link rel='shortcut icon' type='image/x-icon' href='images/world_icon.png' />
 </head>
 
 <body>
