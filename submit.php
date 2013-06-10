@@ -3,13 +3,13 @@
 
 
 	if(user_is_not_logged_in())
-		header("location:login.php") || die(); //user not logged in
+		header('location:login.php') || die(); //user not logged in
 
 	if(user_has_completed_the_survey())
-		header("location:questions.php") || die(); //questionario già inviato
+		header('location:questions.php') || die(); //questionario già inviato
 
 	if(!isset($_POST))
-		header("location:questions.php");
+		header('location:questions.php');
 
 	$id_user = get_user_id();
 
@@ -24,7 +24,7 @@
 	}
 
 	if(count($answers_list) == 0)
-		header("location:questions.php");
+		header('location:questions.php');
 
 	//filtering out invalid answers
 	$n = count($answers_list);
@@ -44,14 +44,12 @@
 	foreach($result as $row)
 	{
 		$answer = $row->id_answer;
-		echo "id $answer -> ";
 
 		$query = 'INSERT INTO given_answers
 			      (id_given_answer, id_user, id_answer)
 			      VALUES
 			      (DEFAULT, ?, ?)';
 		$result = exec_query($query, 'ii', $id_user, $answer);	
-		echo "ok";
 	}
 
 	//user has completed the survey
@@ -61,5 +59,5 @@
 	exec_query($query, 'i', $id_user);
 	
 
-	header("location:completed.php") || die();
+	header('location:completed.php') || die();
 ?>
