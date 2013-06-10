@@ -149,7 +149,7 @@
                             <input type="radio" name="<?php echo $question->id_question ?>"
                                 value="<?php echo $answer->id_answer ?>"
                                 <?php if($question->has_dependencies):?> data-side-effects="true" <?php endif?>
-                                <?php if($completed):?> disabled <?php endif?>
+                                <?php if($completed):?> data-disabled="true" disabled <?php endif?>
                                 <?php if($answer->selected):?> checked <?php endif?> >
                                 <?php echo $answer->text; ?>
                             </input>
@@ -159,7 +159,7 @@
                         case 2: ?>
                             <select <?php if($question->has_dependencies):?> data-side-effects="true" <?php endif?>
                                     name="<?php echo $question->id_question ?>"
-                                    <?php if($completed):?> disabled <?php endif?>>
+                                    <?php if($completed):?> data-disabled="true" disabled <?php endif?>>
                             <option value="" disabled selected/>
                             <?php foreach($answers as $answer): ?>
                                 <option value="<?php echo $answer->id_answer?>"
@@ -174,7 +174,7 @@
                             <input type="checkbox" name="<?php echo $question->id_question ?>[]"
                                 value="<?php echo $answer->id_answer ?>"
                                 <?php if($question->has_dependencies):?> data-side-effects="true" <?php endif?>
-                                <?php if($completed):?> disabled <?php endif?>
+                                <?php if($completed):?> data-disabled="true" disabled <?php endif?>
                                 <?php if($answer->selected):?> checked <?php endif?> >
                                 <?php echo $answer->text; ?>
                             </input>

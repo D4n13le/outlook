@@ -55,13 +55,13 @@ function fetch_questions()
 
               if(to_show && (!visible))
               {
-                //$(this).find('input[type=radio], select').attr('required', true);
                 $(this).slideDown("slow");
+                $(this).find('input:not([data-disabled=true]),select:not([data-disabled=true])').removeAttr("disabled");
               }
               else if((!to_show) && visible)
               {
-                //$(this).find('input[type=radio], select').attr('required', false);
                 $(this).slideUp("slow");
+                $(this).find('input,select').attr("disabled", "disabled");
               }
             });
 

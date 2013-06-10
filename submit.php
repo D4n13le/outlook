@@ -54,8 +54,8 @@
 			      (DEFAULT, ?, ?)';
 		$result = exec_query($query, 'ii', $id_user, $answer);	
 
-		if($result === False)
-			$success = False;
+		if($result === FALSE)
+			$success = FALSE;
 	}
 
 	//user has completed the survey
@@ -64,15 +64,21 @@
 			  WHERE id_user=?';
 	$result = exec_query($query, 'i', $id_user);
 
-	if($result === False)
-		$success = False;
+	if($result === FALSE)
+		$success = FALSE;
 	
+	$newlocation = "";
 	if($success)
+	{
 		commit();
+		$newlocation = 'completed.php';
+	}
 	else
+	{
 		rollback();	
+		$newlocation = 'questions.php';
+	}
 
 	enable_autocommit();
-
-	header('location:completed.php') || die();
+	header("Location:$newlocation") || die();
 ?>

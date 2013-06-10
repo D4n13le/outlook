@@ -29,5 +29,5 @@
     foreach($result as $row)
         $questions[] = $row->id_question;
 
-    echo json_encode($questions, JSON_NUMERIC_CHECK);
+    echo json_encode($questions);
 ?>

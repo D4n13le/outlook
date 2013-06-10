@@ -3,7 +3,7 @@
 
     function open_session()
     {
-        if(session_status() == PHP_SESSION_NONE)
+        if(session_id() == '')
             session_start();
     }
 
@@ -46,19 +46,19 @@
 
     //return an array with multiple object, one for each row of the result
     //each object has as many fields as the fields in the select part of the query
-    //returns False if it fails
+    //returns FALSE if it fails
     function exec_query_multiple_results($query_string, $types = '')
     {
         $result = array();
         $db = get_db();
 
         if(!$db) //check connection
-            return False;
+            return FALSE;
 
         $query = $db->prepare($query_string);
 
         if(!$query) //error while preparing the statement
-            return False;
+            return FALSE;
 
         if(func_num_args() > 2)
         {
@@ -72,26 +72,41 @@
             call_user_func_array(array($query, 'bind_param'), $refs);
         }
 
+
+        $params = array();
+        $row = array();
+        $hits = array();
+
+        $meta = $query->result_metadata(); 
+
+        if($meta)
+        {
+            while ($field = $meta->fetch_field())
+            { 
+                $row[$field->name] = NULL;
+                $params[] = &$row[$field->name];
+            }
+
+            call_user_func_array(array($query, 'bind_result'), $params);
+        }   
+
         if($query->execute())
         {
-            $result = array();
-
-            $temp_result = $query->get_result();
-            if($temp_result)
+            $obj = new stdClass();
+            while ($query->fetch())
             {
-                while($row = $temp_result->fetch_object())
-                    $result[] = $row;
-
-                $temp_result->close();    
+                foreach($row as $key => $val)
+                { 
+                    $obj->{$key} = $val; 
+                }
+                $hits[] = clone $obj;
             }
         }
-        else
-            return False;
 
         $query->close();
-        //$db->close(); //shouldn't be necessary
 
-        return $result;
+        //$db->close(); //shouldn't be necessary
+        return $hits;
     }
 
     function disable_autocommit()
@@ -124,22 +139,22 @@
 
     //returns the first object of the result
     //or NULL if there is none
-    //or False if the query fails
+    //or FALSE if the query fails
     function exec_query($query_string, $types = '')
     {
-        $result = call_user_func_array('exec_query_multiple_results', func_get_args());
-        if($result === False)
-            return False;
+        $args = func_get_args();
+        $result = call_user_func_array('exec_query_multiple_results', $args);
+        if($result === FALSE)
+            return FALSE;
         if(count($result) == 0)
             return NULL;
-        else
-            return $result[0];
+        return $result[0];
     }
 
     function user_has_completed_the_survey()
     {
         if(!user_is_logged_in())
-            return false; //user not logged in
+            return FALSE; //user not logged in
 
         $id_user = get_user_id();
 
@@ -147,7 +162,7 @@
         if($result)
             return $result->completed;
         else
-            return False; //an error happened/invalid id
+            return FALSE; //an error happened/invalid id
     }
 
     function user_has_not_completed_the_survey()
