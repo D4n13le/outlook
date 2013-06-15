@@ -47,7 +47,7 @@
     //return an array with multiple object, one for each row of the result
     //each object has as many fields as the fields in the select part of the query
     //returns FALSE if it fails
-    function exec_query_multiple_results($query_string, $types = '')
+    function exec_query_many_results($query_string, $types = '')
     {
         $result = array();
         $db = get_db();
@@ -143,7 +143,7 @@
     function exec_query($query_string, $types = '')
     {
         $args = func_get_args();
-        $result = call_user_func_array('exec_query_multiple_results', $args);
+        $result = call_user_func_array('exec_query_many_results', $args);
         if($result === FALSE)
             return FALSE;
         if(count($result) == 0)

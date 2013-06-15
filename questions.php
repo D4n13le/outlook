@@ -105,7 +105,7 @@
                            FROM sections
                            ORDER BY section_order';
 
-        $sections = exec_query_multiple_results($sections_query);
+        $sections = exec_query_many_results($sections_query);
         foreach($sections as $section):
         ?>
             <div class="section">
@@ -122,7 +122,7 @@
                                         FROM questions
                                         WHERE questions.id_section=?
                                         ORDER BY question_order';
-                    $questions = exec_query_multiple_results($questions_query, 'i', $section->id_section);
+                    $questions = exec_query_many_results($questions_query, 'i', $section->id_section);
                     foreach($questions as $question):
                 ?>
 
@@ -140,7 +140,7 @@
 											  FROM answers
 											  WHERE id_question=?
 											  ORDER BY answer_order";
-						            $answers = exec_query_multiple_results($answers_query, 'ii', get_user_id(), $question->id_question);
+						            $answers = exec_query_many_results($answers_query, 'ii', get_user_id(), $question->id_question);
                         
                         
                         switch($question->id_question_type): 

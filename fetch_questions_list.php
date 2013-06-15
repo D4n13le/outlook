@@ -23,7 +23,7 @@
 		ORDER BY sections.section_order, questions.question_order";
     $types = str_repeat('i', $n * 2);
     $args = array_merge(array($query, $types), $answers_list, $answers_list);
-    $result = call_user_func_array('exec_query_multiple_results', $args);
+    $result = call_user_func_array('exec_query_many_results', $args);
 
     $questions = array();
     foreach($result as $row)
