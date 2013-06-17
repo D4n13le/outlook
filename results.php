@@ -112,7 +112,8 @@
       ?>
 
       <div id="right_usersection_side">
-          <span id="user_name">Questionari completati: <?php echo "{$data->count}" ?></span><br><br>
+          <span style="font-size: 60px"><?php echo "{$data->count}" ?></span><br>
+          <span style="font-size: 16pt">Questionari completati</span><br>
       </div>
     </div>
 
