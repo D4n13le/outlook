@@ -22,3 +22,8 @@ Gli ex-studenti ricevono una chiave di accesso che permette loro di accedere al 
 I risultati vengono raccolti e memorizzati in una banca dati dedicata, ed è possibile visualizzare un resoconto delle risposte con diagrammi a torta.
 
 ![Outlook diagrammi a torta](https://github.com/D4n13le/tesina-maturita/blob/master/Sito/results/results.png?raw=true)
+
+
+Per saperne di più
+------------------
+Per maggiori informazioni puoi consultare la [relazione che documenta il progetto](https://github.com/D4n13le/tesina-maturita/raw/master/Tesina.pdf).
